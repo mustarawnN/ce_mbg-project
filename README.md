@@ -21,3 +21,17 @@
 | **Plotly** | Etkileşimli grafikler | Araştırmacı sinyale yakınlaşıp tek tek atımları inceleyebilir. |
 | **fpdf2** | Otomatik PDF rapor | Tek tıkla BPM, aritmi ve EC50 raporu üretir (kriter 5). |
 | **SQLite** | Deney kayıtları | Kurulum gerektirmez. Doz, video ve sonuçlar saklanır, eski deneyler tekrar açılabilir. |
+
+
+GÖREV DAĞILIMLARI
+
+Kişi	Modül	Görevler	Zorluk
+Ali	Ön işleme ve video hattı	FFmpeg ile sabit FPS ve tek formata dönüştürme. Video bilgilerini okuma (FPS, süre, çözünürlük). Kalite kontrol: bulanıklık, aşırı karanlık/parlaklık, canlının kadrajdan kaçtığı bölümleri işaretleme. CLAHE ile kontrast artırma. Görüntü sabitleme (ECC / phaseCorrelate).	Orta-Zor
+Vahit	Kalbin bulunması ve sinyal çıkarma	Piksel bazlı FFT ile kalp ısı haritası. Kalp bölgesinin (ROI) otomatik seçimi, başarısız olursa elle seçime geçiş. Üç sinyal yöntemi: ROI ortalama parlaklık, kareler arası fark, optik akış. En temiz sinyali veren yöntemin seçimi.	Zor
+Mustafa	Sinyal analizi ve metrikler	Trend kaldırma ve band-pass filtre. FFT/Welch ile BPM. find_peaks ile atım sayısı. Ritim metrikleri: atımlar arası süre, değişkenlik (SD, CV, RMSSD), atlanan atım ve duraksamalar. Her sonuç için güvenilirlik skoru.	Orta-Zor
+Web Sitesi
+ 
+Kişi	Modül	Görevler	Zorluk
+Ali	Yükleme, veritabanı, rapor	Video yükleme sayfası ve deney bilgisi formu (madde, doz, sıcaklık, yaş/boy, pamuk, bekleme süresi). SQLite şeması ve kayıt işlemleri. Analiz hattının siteden çalıştırılması (ilerleme çubuğu). PDF rapor.	Orta
+Vahit	Analiz sonuç ekranı	Videoda kalp ısı haritası katmanı ve ROI önizlemesi. ROI'yi elle düzeltme ve yeniden analiz. Sinyal ve spektrum grafikleri (Plotly), atımların sinyal üzerinde işaretlenmesi. Deney geçmişi sayfası.	Orta
+Mustafa	Karşılaştırma ve doz-yanıt	Kontrol ve doz gruplarının karşılaştırılması, "kontrole göre % değişim". İstatistik testi (ANOVA veya Kruskal-Wallis). Doz-yanıt eğrisi ve EC50. Koşulları farklı videolar karışırsa (sıcaklık, yaş) uyarı verme.
